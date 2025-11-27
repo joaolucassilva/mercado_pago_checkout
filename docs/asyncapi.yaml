@@ -1,0 +1,47 @@
+asyncapi: '2.6.0'
+info:
+  title: Payment Events Architecture
+  version: '1.0.0'
+  description: |
+    Documentação dos eventos assíncronos do sistema, incluindo webhooks recebidos de gateways (Mercado Pago) e eventos de domínio interno
+  contact:
+    name: João Lucas
+    email: luccas332@gmail.com
+
+servers:
+  local:
+    url: http://localhost:8000
+    protocol: http
+    description: Ambiente local (via Ngrok/Sail)
+
+channels:
+  # 1. O webhook que recebemos (Entrada)
+  /webhook/mercadopago:
+    publish:
+      summary: Notificação de Pagamento (Mercado Pago)
+      description: Endpoint público onde o Mercado Pago envia notificações de mudança de status (IPN/Webhoos).
+      operationId: onPaymentNotification
+      message:
+        $ref: '#/components/messages/MercadoPagoNotification'
+
+  # 2. O job interno que processamos (Processamento)
+  queue:payment_processing:
+    subscribe:
+      summary: Job de Processamento de Pagamentos
+      description: Mensagem despachada para a fila (Redis) após receber o webhook, para processamento pesado e seguro.
+      operationId: processPaymentJob
+      message:
+        $ref: '#/components/messages/InternalPaymentMessage'
+
+components:
+  messages:
+    MercadoPagoNotification:
+      name: MP Webhook Payload
+      title: Payload de Notificação do Mercado Pago
+      summary: Estrutura simplificada do JSON enviada pelo MP.
+      contentType: application/json
+      payload:
+
+    InternalPaymentMessage:
+      payload:
+        $ref: '#/components/schemas/InternalPaymentMessagePayload'
