@@ -1,7 +1,7 @@
 # Laravel Payment Gateway: Mercado Pago Integration
 
-![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=flat&logo=php)
-![Laravel](https://img.shields.io/badge/Laravel-10-FF2D20?style=flat&logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8.4-777BB4?style=flat&logo=php)
+![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?style=flat&logo=laravel)
 ![Mercado Pago](https://img.shields.io/badge/Mercado_Pago-SDK-009EE3?style=flat&logo=mercadopago)
 ![Tests](https://img.shields.io/badge/Tests-Passing-success)
 
