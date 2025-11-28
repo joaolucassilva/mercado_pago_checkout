@@ -19,7 +19,7 @@ return new class extends Migration {
             ); // Se apagar o produto, mantemos o pedido por histórico (sem cascade)
 
             // Dados Financeiros
-            $table->decimal('transaction_amount', 10, 2);
+            $table->bigInteger('transaction_amount');
             $table->string('payment_method')->nullable(); // pix, credit_card
 
             // Controle de Estado e Integração
