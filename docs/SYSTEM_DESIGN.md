@@ -32,7 +32,7 @@ erDiagram
     PRODUCTS {
         bigint id PK
         string name
-        decimal price
+        bigint price "Em centavos (x100)"
         string description
     }
 
@@ -40,7 +40,7 @@ erDiagram
         bigint id PK
         bigint user_id PK
         bigint product_id PK
-        decimal transaction_amount "Preço snapshot"
+        bigint transaction_amount "Em centavos (x100)"
         string external_reference "UUID único MP"
         string mercadopago_id "ID do Gateway"
         string status "pending, approved, in_process, rejected"

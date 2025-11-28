@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         $product = Product::query()->firstOrCreate(
             ['name' => 'Ebook Laravel'],
             [
-                'price' => 100.00,
+                'price' => 10000,
                 'description' => 'Livro sobre Laravel',
             ]
         );

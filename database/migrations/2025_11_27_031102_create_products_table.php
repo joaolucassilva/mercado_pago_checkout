@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->decimal('price', 10, 2); // Ex: 99999999.99
+            $table->bigInteger('price');
             $table->timestamps();
         });
     }
